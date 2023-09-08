@@ -1,16 +1,42 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+import { Button } from "@react-md/button";
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogContent,
+  DialogFooter,
+} from "@react-md/dialog";
+import { useToggle } from "@react-md/utils";
 import * as turf from '@turf/turf';
 import caretImage from './caret-forward-outline_1.png';
 import * as d3 from 'd3';
 
 window.$number = 0
 
-const DrawArc = ({map, mapContainer, arrayInput}) => {
+const DrawArc = ({map, mapContainer, arrayInput, refresh}) => {
 
   const [animationStarted, setAnimationStarted] = useState(false)
   
   const [selectedArcId, setSelectedArcId] = useState(null)
+  const [originValue, setOriginValue] = useState('');
+  const [destinationValue, setDestinationValue] = useState('');
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+
+  const openDialog = (origin, destination) => {
+    console.log(`isDialogOpen:${isDialogOpen}`)
+    setOriginValue(origin)
+    setDestinationValue(destination)
+    setIsDialogOpen(true)
+    console.log(`isDialogOpen:${isDialogOpen}`)
+
+  }
+
+  const closeDialog = () => {
+    setIsDialogOpen(false)
+  }
   
   const countriesGeoJson = require("./countriesldgeo.json")
   const colorScale = d3.scaleSequential(["#FFFFCC", "red"]).domain([0, 100])
@@ -22,9 +48,9 @@ const DrawArc = ({map, mapContainer, arrayInput}) => {
     }
 
     if (map && arrayInput && arrayInput.length > 0 && !animationStarted) {
+      console.log('arrayInput', arrayInput)
 
       arrayInput.forEach((arcInput) => {
-
         //تغییر رنگ کشرها براساس تعداد حملات
         for (const feature of countriesGeoJson) {
           const countryName = feature.properties.ADMIN;
@@ -190,6 +216,16 @@ const DrawArc = ({map, mapContainer, arrayInput}) => {
     
         function animate() {
           if (counter < arc.length) {
+
+            map.on('mouseenter', 'line-layer', (e) => {
+              const { id } = e.features[0];
+              setSelectedArcId(id);
+            });
+
+            map.on('mouseleave', 'line-layer', () => {
+              setSelectedArcId(null);
+            })
+
             const [lng, lat] = arc[counter];
             // point.features[0].properties = {'icon-rotate': turf.bearing(
             //   turf.point(arc[counter]),
@@ -209,40 +245,87 @@ const DrawArc = ({map, mapContainer, arrayInput}) => {
         animate();
         setAnimationStarted(true);
 
-        // map.on("mouseenter", lineLayerId, (e) => {
-        //   console.log('Mouse', e)
-        //   setSelectedArcId(lineLayerId);
-        //   for (const lineLayerId of arrayInput.map((_, index) => `line-layer-${index}`)) {
-        //     const visibility = lineLayerId === selectedArcId ? "visible" : "none";
-        //     map.setLayoutProperty(lineLayerId, "visibility", visibility);
-        //     console.log('selectedArcId:',selectedArcId, 'lineLayerId:', lineLayerId, visibility)
-        //   }
-        // });
+        map.on("mouseenter", lineLayerId, (e) => {
+          console.log('Mouse', e)
+          setSelectedArcId(lineLayerId);
+        });
 
-        // map.on("mouseleave", lineLayerId, () => {
-        //   setSelectedArcId(null);
-        //   for (const lineLayerId of arrayInput.map((_, index) => `line-layer-${index}`)) {
-        //     const visibility = "visible"
-        //     map.setLayoutProperty(lineLayerId, "visibility", visibility);
-        //   }
+        map.on("mouseleave", lineLayerId, () => {
+          setSelectedArcId(null);
+        });
 
-        // });
+        map.on("click", lineLayerId, (e) => {
+          console.log('Origin', route.features[0].geometry.coordinates[0])
+          console.log('destination', route.features[0].geometry.coordinates[49])
+          console.log('click', e)
+          openDialog(route.features[0].geometry.coordinates[0], route.features[0].geometry.coordinates[49])
+        })
       });
     }
   }, [map, arrayInput]);
 
   //امکان مشاهده تنها یک کمان
-  // useEffect(() => {
-  //   if (map) {
-  //     for (const lineLayerId of arrayInput.map((_, index) => `line-layer-${index}`)) {
-  //       const visibility = lineLayerId == selectedArcId ? "visible" : "none";
-  //       map.setLayoutProperty(lineLayerId, "visibility", visibility);
-  //       console.log('selectedArcId:',selectedArcId, 'lineLayerId:', lineLayerId, visibility)
-  //     }
-  //   }
-  // }, [selectedArcId]);
+  useEffect(() => {
+    if (map) {
+      if(selectedArcId == null){
+        for (const lineLayerId of arrayInput.map((_, index) => `line-layer-${index}`)) {
+          const visibility = "visible"
+          map.setLayoutProperty(lineLayerId, "visibility", visibility);
+        }
+      }
+      else {
+        for (const lineLayerId of arrayInput.map((_, index) => `line-layer-${index}`)) {
+          const visibility = lineLayerId == selectedArcId ? "visible" : "none";
+          map.setLayoutProperty(lineLayerId, "visibility", visibility);
+          console.log('selectedArcId:',selectedArcId, 'lineLayerId:', lineLayerId, visibility)
+        }
+      }
+    }
+  }, [selectedArcId]);
 
-  return <div ref={mapContainer} style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />;
+  useEffect(() => {
+    if(animationStarted && map) {
+      for (const value of arrayInput.map((_, index) => index)) {
+
+        const sourceId = `route-source-${value}`
+        const lineLayerId = `line-layer-${value}`
+        const pointSourceId = `point-source-${value}`
+        const pointLayerId = `point-layer-${value}`
+
+        console.log("remove")
+        map.removeLayer(lineLayerId);
+        // map.removeSource(sourceId);
+        map.removeLayer(pointLayerId);
+        // map.removeSource(pointSourceId)
+      }
+    }
+  })
+
+  return (
+  <div className='dialog'>
+    {/* <div ref={mapContainer} style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} /> */}
+    {isDialogOpen && (
+      <Dialog
+      id="main-dialog"
+      visible={isDialogOpen}
+      onRequestClose={closeDialog}
+      aria-labelledby="main-dialog-title"
+      >
+        <DialogHeader>
+          <DialogTitle id="main-dialog-title">Information</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <p>Origin: {originValue}</p>
+          <p>Destination: {destinationValue}</p>
+        </DialogContent>
+        <DialogFooter>
+          <Button id="main-dialog-close" onClick={closeDialog}>
+            Close
+          </Button>
+        </DialogFooter>
+      </Dialog>
+    )}
+  </div>);
 };
 
 export default DrawArc;

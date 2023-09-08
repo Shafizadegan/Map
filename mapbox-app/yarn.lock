@@ -1948,6 +1948,11 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@juggle/resize-observer@^3.3.0":
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/@juggle/resize-observer/-/resize-observer-3.4.0.tgz"
+  integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
+
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.4"
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
@@ -2453,6 +2458,127 @@
   integrity sha512-SDuSY/D4yDL6LQDa69l/GCcnZLRiGYdyvYkxWb0CgnzTPdPrcdrzGkzkvpC3zsA4fEFw2smlDje370QGHwlisg==
   dependencies:
     "@babel/runtime" "^7.0.0"
+
+"@react-md/app-bar@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/app-bar/-/app-bar-5.1.3.tgz"
+  integrity sha512-j1De/pkjYB/BwVabGSikudRehjau8au+i6CT94lAZfw5qGQlvI0RzBi6IJIjPysIdaSHMh0IMDyxBT+rfpcsxg==
+  dependencies:
+    "@react-md/button" "^5.1.3"
+    "@react-md/elevation" "^5.1.3"
+    "@react-md/icon" "^5.1.3"
+    "@react-md/theme" "^5.1.3"
+    "@react-md/typography" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+    classnames "^2.3.1"
+
+"@react-md/button@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/button/-/button-5.1.3.tgz"
+  integrity sha512-aB5I0BGeN/2JwgCgV5M06wI/fmQZCZ78TnNZdQKw98tndUw99jHaOAHTqLD/K4m6vV5Tg38mTCASXyGDwGO6Zw==
+  dependencies:
+    "@react-md/elevation" "^5.1.3"
+    "@react-md/icon" "^5.1.3"
+    "@react-md/states" "^5.1.3"
+    "@react-md/theme" "^5.1.3"
+    "@react-md/transition" "^5.1.3"
+    "@react-md/typography" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+    classnames "^2.3.1"
+
+"@react-md/dialog@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/dialog/-/dialog-5.1.3.tgz"
+  integrity sha512-P+mQdimCCKpmKmEqEN/0ChhQxHe+fg3gw0hPgSrf5jI6MiXaCQftArK7L7/lo3wDpo86x1EHwQBT+bXDE5/D9Q==
+  dependencies:
+    "@react-md/app-bar" "^5.1.3"
+    "@react-md/elevation" "^5.1.3"
+    "@react-md/overlay" "^5.1.3"
+    "@react-md/portal" "^5.1.0"
+    "@react-md/theme" "^5.1.3"
+    "@react-md/transition" "^5.1.3"
+    "@react-md/typography" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+    classnames "^2.3.1"
+
+"@react-md/elevation@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/elevation/-/elevation-5.1.3.tgz"
+  integrity sha512-spArkcqASlReByg5F+Tp+e74ek9Vi1n6nU4TOr5U42sytVwncilEUchxl6zFcwg3MDwMjfk40AVPuwkJRlDoZg==
+  dependencies:
+    "@react-md/theme" "^5.1.3"
+    "@react-md/transition" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+
+"@react-md/icon@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/icon/-/icon-5.1.3.tgz"
+  integrity sha512-GCgNmj3bqKhG4FuEud83ffBbtyytLlFNQ2nRPWdzqzi5C3UzEn1p6tn5AwUQTqP6Anf51d6qPXl49+lEk8bkrA==
+  dependencies:
+    "@react-md/theme" "^5.1.3"
+    "@react-md/typography" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+    classnames "^2.3.1"
+
+"@react-md/overlay@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/overlay/-/overlay-5.1.3.tgz"
+  integrity sha512-1yMG5Y53FSnN6jzJ78p/Ux12XLmjDABoHKPGjHHk5n3/DxFjADK3nGGPZHQiY2d7P+GKqi6X36SU2Vdg+2RjEw==
+  dependencies:
+    "@react-md/portal" "^5.1.0"
+    "@react-md/theme" "^5.1.3"
+    "@react-md/transition" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+    classnames "^2.3.1"
+
+"@react-md/portal@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/@react-md/portal/-/portal-5.1.0.tgz"
+  integrity sha512-f8kY7G2tAFKPXEVqkuBk5Kv1Pk4ICO+ZzC4jLJOISKGaVMs0jVTJfKyngj3/EnI4eYZzKqCO3OACI/3Khl5OyA==
+
+"@react-md/states@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/states/-/states-5.1.3.tgz"
+  integrity sha512-RsKZ8Vb+QorIckuKoLOs5Paykt6TrHBcFSjgh4JXR0KbqJKMIQwUDvmAvmtYLNt8akFNLtrAV77ceODqW/Gr7Q==
+  dependencies:
+    "@react-md/theme" "^5.1.3"
+    "@react-md/transition" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+    classnames "^2.3.1"
+
+"@react-md/theme@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/theme/-/theme-5.1.3.tgz"
+  integrity sha512-Hsj9+UfrhIcPS88s+WCVvFRWZ1f+p/lAT18W4D/o+LiKBYZKb/lKZgC8d8oBdzUyXoFW9T49TS5ZrYtba8nz/Q==
+  dependencies:
+    "@react-md/utils" "^5.1.3"
+
+"@react-md/transition@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/transition/-/transition-5.1.3.tgz"
+  integrity sha512-qPivx4btoYWX1setROaFVbhP3AzB3OCLggu/MUk05Rr3De67M0vzeKTUS/E6KfObXSPE8xkZ3TRD4HsxYxWXyg==
+  dependencies:
+    "@react-md/portal" "^5.1.0"
+    "@react-md/theme" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+    classnames "^2.3.1"
+
+"@react-md/typography@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/typography/-/typography-5.1.3.tgz"
+  integrity sha512-3ormhB3/lwm5Bvq2lehVbY7Q/wP5WznL03dg+mh5EudyyQE0gJ8v7f06l1rMI96O34fjuhdKY/0Qz9u51rvnsg==
+  dependencies:
+    "@react-md/theme" "^5.1.3"
+    "@react-md/utils" "^5.1.3"
+    classnames "^2.3.1"
+
+"@react-md/utils@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@react-md/utils/-/utils-5.1.3.tgz"
+  integrity sha512-orSXDoYa655vCvnpAWCjCtTGc/t8XQKimSn61SIZ5Y7a5oY/ft7n9pLraf921zsfvUIhqnd0e+tPQBd9L9OPQA==
+  dependencies:
+    "@juggle/resize-observer" "^3.3.0"
+    classnames "^2.3.1"
 
 "@react-native-community/cli-clean@11.3.5":
   version "11.3.5"
@@ -5803,6 +5929,11 @@ cjs-module-lexer@^1.0.0:
   version "1.2.3"
   resolved "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.3.tgz"
   integrity sha512-0TNiGstbQmCFwt4akjjBg5pLRTSyj/PkWQ1ZoO2zntmg9yLqSRxwEa4iCfQLGjqhiqBfOJa7W/E8wfGrTDmlZQ==
+
+classnames@^2.3.1:
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
+  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
 clean-css@^5.2.2:
   version "5.3.2"
@@ -11970,7 +12101,7 @@ react-devtools-core@^4.27.2:
     shell-quote "^1.6.1"
     ws "^7"
 
-react-dom@^18.0.0, react-dom@^18.2.0, react-dom@>=16.3, react-dom@>=16.3.0:
+react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 16.14", react-dom@>=16.3, react-dom@>=16.3.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -12121,7 +12252,7 @@ react-shallow-renderer@^16.15.0:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0 || ^18.0.0"
 
-"react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=16.3, react@>=16.3.0, react@>=16.6.1, react@18.2.0:
+"react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.14", react@>=16.3, react@>=16.3.0, react@>=16.6.1, react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
