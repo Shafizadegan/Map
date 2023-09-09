@@ -283,23 +283,24 @@ const DrawArc = ({map, mapContainer, arrayInput, refresh}) => {
     }
   }, [selectedArcId]);
 
-  useEffect(() => {
-    if(animationStarted && map) {
-      for (const value of arrayInput.map((_, index) => index)) {
+  // برای حذف کمان ولی کار نمی دهد
+  // useEffect(() => {
+  //   if(animationStarted && map) {
+  //     for (const value of arrayInput.map((_, index) => index)) {
 
-        const sourceId = `route-source-${value}`
-        const lineLayerId = `line-layer-${value}`
-        const pointSourceId = `point-source-${value}`
-        const pointLayerId = `point-layer-${value}`
+  //       const sourceId = `route-source-${value}`
+  //       const lineLayerId = `line-layer-${value}`
+  //       const pointSourceId = `point-source-${value}`
+  //       const pointLayerId = `point-layer-${value}`
 
-        console.log("remove")
-        map.removeLayer(lineLayerId);
-        // map.removeSource(sourceId);
-        map.removeLayer(pointLayerId);
-        // map.removeSource(pointSourceId)
-      }
-    }
-  })
+  //       console.log("remove")
+  //       map.removeLayer(lineLayerId);
+  //       // map.removeSource(sourceId);
+  //       map.removeLayer(pointLayerId);
+  //       // map.removeSource(pointSourceId)
+  //     }
+  //   }
+  // })
 
   return (
   <div className='dialog'>
